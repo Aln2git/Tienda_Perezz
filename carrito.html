@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito — Tienda Pérez</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/paginas.css">
+</head>
+<body>
+
+<header>
+  <div class="header-contenido">
+    <a href="login.html" class="header-link">
+      <img src="img/inicio.png" alt="Inicio de sesión" width="36">
+      <span>Iniciar sesión</span>
+    </a>
+    <a href="index.html" class="logo-link">
+      <img src="img/logo1.png" alt="Logo Tienda Pérez" width="180">
+    </a>
+    <a href="carrito.html" class="header-link">
+      <img src="img/carrito.png" alt="Carrito de compras" width="36">
+      <span>Carrito</span>
+    </a>
+  </div>
+</header>
+
+<nav>
+  <a href="nosotros.html">Sobre nosotros</a>
+  <a href="menu.html">Menú</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
+
+<div class="pagina-hero">
+  <h1>🛒 Tu Carrito</h1>
+  <p>Revisa tus productos antes de confirmar el pedido.</p>
+</div>
+
+<main class="pagina-contenido">
+  <div class="carrito-layout">
+
+    <!-- Productos del carrito (se llena con JS) -->
+    <div>
+      <div id="carrito-contenido">
+        <!-- Renderizado por carrito.js -->
+      </div>
+
+      <!-- Botón vaciar (solo visible si hay productos) -->
+      <div style="margin-top: 16px; text-align: right;">
+        <button
+          onclick="vaciarCarrito()"
+          style="background:#ef4444;color:white;border:none;padding:9px 18px;border-radius:6px;cursor:pointer;font-family:'Trebuchet MS',sans-serif;font-weight:bold;">
+          🗑 Vaciar carrito
+        </button>
+      </div>
+    </div>
+
+    <!-- Resumen del pedido -->
+    <aside class="resumen-box">
+      <h2>Resumen del pedido</h2>
+
+      <div class="resumen-linea">
+        <span>Subtotal</span>
+        <span id="resumen-subtotal">$0.00</span>
+      </div>
+      <div class="resumen-linea">
+        <span>Envío</span>
+        <span id="resumen-envio">Gratis</span>
+      </div>
+      <div class="resumen-total">
+        <span>Total</span>
+        <span id="resumen-total">$0.00</span>
+      </div>
+
+      <button class="btn-pagar" onclick="procesarPago()">
+        ✅ Confirmar pedido
+      </button>
+
+      <a href="index.html" style="display:block;text-align:center;margin-top:14px;color:#0f2a57;font-size:0.9rem;text-decoration:none;font-weight:bold;">
+        ← Seguir comprando
+      </a>
+    </aside>
+
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Tienda Pérez — Abarrotes en línea | CONALEP 145</p>
+  <p>Diseño de Páginas Web — Alumno: Alan Fernando Ramirez Marin</p>
+</footer>
+
+<script src="js/carrito.js"></script>
+</body>
+</html>

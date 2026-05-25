@@ -1,0 +1,484 @@
+
+
+
+.pagina-hero {
+  background-color: var(--color-nav);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.pagina-hero h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.pagina-hero p {
+  font-size: 1.05rem;
+  opacity: 0.85;
+}
+
+
+.pagina-contenido {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.nosotros-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.nosotros-texto h2,
+.nosotros-valores h2 {
+  font-size: 1.3rem;
+  color: var(--color-nav);
+  margin: 20px 0 8px;
+  border-left: 4px solid var(--color-acento);
+  padding-left: 10px;
+}
+
+.nosotros-texto p {
+  font-size: 0.97rem;
+  line-height: 1.7;
+  color: var(--color-texto);
+  margin-bottom: 12px;
+}
+
+.valores-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.valor-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.valor-icono {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.valor-item h3 {
+  font-size: 1rem;
+  color: var(--color-nav);
+  margin-bottom: 4px;
+}
+
+.valor-item p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+
+.menu-categorias {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.menu-categoria h2 {
+  font-size: 1.2rem;
+  color: white;
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.menu-categoria .refrescos { background: #3b82f6; }
+.menu-categoria .botanas   { background: #ef4444; }
+.menu-categoria .lacteos   { background: #22c55e; }
+
+.menu-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.menu-tabla thead {
+  background-color: var(--color-nav);
+  color: white;
+}
+
+.menu-tabla th,
+.menu-tabla td {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #eee;
+}
+
+.menu-tabla tbody tr:hover {
+  background-color: #f0f6ff;
+}
+
+.menu-tabla .precio-col {
+  color: var(--color-precio);
+  font-weight: bold;
+}
+
+.menu-tabla .btn-agregar {
+  margin-top: 0;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.contacto-info h2,
+.contacto-form-wrap h2 {
+  font-size: 1.3rem;
+  color: var(--color-nav);
+  border-left: 4px solid var(--color-acento);
+  padding-left: 10px;
+  margin-bottom: 16px;
+}
+
+.contacto-dato {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+
+.contacto-dato span.icono {
+  font-size: 1.6rem;
+}
+
+.contacto-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contacto-form label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--color-nav);
+}
+
+.contacto-form input,
+.contacto-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  background: white;
+  color: var(--color-texto);
+}
+
+.contacto-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contacto-form input:focus,
+.contacto-form textarea:focus {
+  outline: none;
+  border-color: var(--color-acento);
+}
+
+.btn-enviar {
+  background: var(--color-acento);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.btn-enviar:hover {
+  background: #e05a00;
+}
+
+.carrito-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.carrito-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.carrito-tabla thead {
+  background-color: var(--color-nav);
+  color: white;
+}
+
+.carrito-tabla th,
+.carrito-tabla td {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #eee;
+}
+
+.carrito-tabla td img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.carrito-tabla .precio-col {
+  color: var(--color-precio);
+  font-weight: bold;
+}
+
+.carrito-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.carrito-cantidad button {
+  background: var(--color-nav);
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-eliminar {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.carrito-vacio {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.carrito-vacio p {
+  font-size: 1.1rem;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.resumen-box {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.resumen-box h2 {
+  font-size: 1.2rem;
+  color: var(--color-nav);
+  border-left: 4px solid var(--color-acento);
+  padding-left: 10px;
+  margin-bottom: 16px;
+}
+
+.resumen-linea {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.97rem;
+  margin-bottom: 10px;
+  color: var(--color-texto);
+}
+
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-top: 2px solid #eee;
+  padding-top: 12px;
+  margin-top: 8px;
+  color: var(--color-nav);
+}
+
+.btn-pagar {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  background: var(--color-acento);
+  color: white;
+  border: none;
+  padding: 13px;
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-pagar:hover {
+  background: #e05a00;
+}
+
+
+.login-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.login-box {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.login-box h2 {
+  font-size: 1.5rem;
+  color: var(--color-nav);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.login-box .login-subtitulo {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 28px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--color-nav);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  color: var(--color-texto);
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--color-acento);
+}
+
+.btn-login {
+  background: var(--color-acento);
+  color: white;
+  border: none;
+  padding: 13px;
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.btn-login:hover {
+  background: #e05a00;
+}
+
+.login-links {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.login-links a {
+  color: var(--color-nav);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-links a:hover {
+  color: var(--color-acento);
+}
+
+.login-separador {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+
+
+@media (max-width: 768px) {
+  .nosotros-grid,
+  .contacto-grid,
+  .carrito-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pagina-hero h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .login-box {
+    padding: 28px 18px;
+  }
+
+  .menu-tabla th,
+  .menu-tabla td,
+  .carrito-tabla th,
+  .carrito-tabla td {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+}
