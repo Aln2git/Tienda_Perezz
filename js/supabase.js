@@ -11,7 +11,7 @@ async function cargarProductos() {
   return await response.json()
 }
 
-async function llenarTabla(productos, categoria, tbodyId) {
+function llenarTabla(productos, categoria, tbodyId) {
   const tbody = document.getElementById(tbodyId)
   tbody.innerHTML = ''
 
@@ -37,6 +37,8 @@ async function initMenu() {
   llenarTabla(productos, 'Refrescos', 'tbody-refrescos')
   llenarTabla(productos, 'Botanas',   'tbody-botanas')
   llenarTabla(productos, 'Lácteos',  'tbody-lacteos')
+
+  inicializarBotonesAgregar()
 }
 
 async function buscarIdProducto(nombre) {
@@ -104,4 +106,12 @@ async function registrarVentaEnSupabase(carrito) {
   return idVenta
 }
 
-document.addEventListener('DOMContentLoaded', initMenu)
+document.addEventListener('DOMContentLoaded', () => {
+  actualizarContador()
+  renderizarCarrito()
+  initMenu().then(() => {
+    if (!document.getElementById('tbody-refrescos')) {
+      inicializarBotonesAgregar()
+    }
+  })
+})
