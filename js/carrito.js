@@ -10,7 +10,6 @@ function actualizarContador() {
   const carrito = obtenerCarrito();
   const total = carrito.reduce((sum, item) => sum + item.cantidad, 0);
 
- 
   let contador = document.getElementById('carrito-contador');
   const linkCarrito = document.querySelector('a[href="carrito.html"]');
 
@@ -37,7 +36,6 @@ function actualizarContador() {
 }
 
 function leerDatosProducto(btn) {
-  // Caso 1: tarjeta de producto (index.html)
   const tarjeta = btn.closest('.producto');
   if (tarjeta) {
     const nombre = tarjeta.querySelector('h3').textContent.trim();
@@ -47,14 +45,13 @@ function leerDatosProducto(btn) {
     return { nombre, precio, img };
   }
 
-  // Caso 2: fila de tabla (menu.html)
   const fila = btn.closest('tr');
   if (fila) {
     const celdas = fila.querySelectorAll('td');
     const nombre = celdas[0].textContent.trim();
     const precioTexto = celdas[2].textContent.trim();
     const precio = parseFloat(precioTexto.replace('$', '').replace(',', ''));
-    const img = ''; // el menú no tiene imagen, se deja vacío
+    const img = '';
     return { nombre, precio, img };
   }
 
@@ -127,7 +124,7 @@ function mostrarToast(mensaje) {
 
 function renderizarCarrito() {
   const contenedor = document.getElementById('carrito-contenido');
-  if (!contenedor) return; // No estamos en carrito.html
+  if (!contenedor) return;
 
   const carrito = obtenerCarrito();
 
@@ -144,7 +141,6 @@ function renderizarCarrito() {
     return;
   }
 
-  // Tabla de productos
   let filas = carrito.map((item, i) => `
     <tr>
       <td>${item.img ? `<img src="${item.img}" alt="${item.nombre}">` : ''}</td>
@@ -180,7 +176,6 @@ function renderizarCarrito() {
     </table>
   `;
 
-  // Calcular totales
   const subtotal = carrito.reduce((s, i) => s + i.precio * i.cantidad, 0);
   const envio = subtotal > 0 ? 30 : 0;
   actualizarResumen(subtotal, envio);
@@ -223,16 +218,23 @@ function vaciarCarrito() {
   }
 }
 
-function procesarPago() {
+async function procesarPago() {
   const carrito = obtenerCarrito();
   if (carrito.length === 0) {
     alert('Tu carrito está vacío.');
     return;
   }
-  alert('¡Gracias por tu compra! Tu pedido ha sido recibido. ');
-  guardarCarrito([]);
-  actualizarContador();
-  renderizarCarrito();
+
+  try {
+    await registrarVentaEnSupabase(carrito);
+    alert('¡Gracias por tu compra! Tu pedido ha sido recibido.');
+    guardarCarrito([]);
+    actualizarContador();
+    renderizarCarrito();
+  } catch (error) {
+    console.error('Error al registrar la venta:', error);
+    alert('Hubo un problema al procesar tu compra. Intenta de nuevo.');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
