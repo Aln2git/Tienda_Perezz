@@ -29,11 +29,79 @@ async function llenarTabla(productos, categoria, tbodyId) {
   })
 }
 
-async function init() {
+async function initMenu() {
+  const tablaRefrescos = document.getElementById('tbody-refrescos')
+  if (!tablaRefrescos) return
+
   const productos = await cargarProductos()
   llenarTabla(productos, 'Refrescos', 'tbody-refrescos')
   llenarTabla(productos, 'Botanas',   'tbody-botanas')
   llenarTabla(productos, 'Lácteos',  'tbody-lacteos')
 }
 
-init()
+async function buscarIdProducto(nombre) {
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/productos?nombre=eq.${encodeURIComponent(nombre)}&select=id_producto`,
+    {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`
+      }
+    }
+  )
+  const data = await response.json()
+  return data.length > 0 ? data[0].id_producto : null
+}
+
+async function crearVenta() {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/ventas`, {
+    method: 'POST',
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify({})
+  })
+  const data = await response.json()
+  return data[0].id_venta
+}
+
+async function insertarDetalleVenta(idVenta, idProducto, cantidad, precioUnitario) {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/detalle_ventas`, {
+    method: 'POST',
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify({
+      id_venta: idVenta,
+      id_producto: idProducto,
+      cantidad: cantidad,
+      precio_unitario: precioUnitario
+    })
+  })
+  return response.ok
+}
+
+async function registrarVentaEnSupabase(carrito) {
+  const idVenta = await crearVenta()
+
+  for (const item of carrito) {
+    const idProducto = await buscarIdProducto(item.nombre)
+
+    if (!idProducto) {
+      console.warn(`No se encontró el producto "${item.nombre}" en la base de datos`)
+      continue
+    }
+
+    await insertarDetalleVenta(idVenta, idProducto, item.cantidad, item.precio)
+  }
+
+  return idVenta
+}
+
+document.addEventListener('DOMContentLoaded', initMenu)
