@@ -236,9 +236,3 @@ async function procesarPago() {
     alert('Hubo un problema al procesar tu compra. Intenta de nuevo.');
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  actualizarContador();
-  inicializarBotonesAgregar();
-  renderizarCarrito();
-});
