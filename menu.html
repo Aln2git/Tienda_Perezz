@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -42,7 +41,6 @@
   <section class="pagina-contenido">
     <div class="menu-categorias">
 
-      
       <div class="menu-categoria">
         <h2 class="categoria-titulo refrescos">🥤 Refrescos</h2>
         <table class="menu-tabla">
@@ -54,36 +52,10 @@
               <th>Acción</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Red Cola 600ml</td>
-              <td>Bebida sabor cola refrescante</td>
-              <td class="precio-col">$35</td>
-              <td><button class="btn-agregar">Agregar</button></td>
-            </tr>
-            <tr>
-              <td>Pepsi 600ml</td>
-              <td>Refresco clásico de cola</td>
-              <td class="precio-col">$28</td>
-              <td><button class="btn-agregar">Agregar</button></td>
-            </tr>
-            <tr>
-              <td>Jugo 600ml</td>
-              <td>Bebida de jugo natural refrescante</td>
-              <td class="precio-col">$30</td>
-              <td><button class="btn-agregar">Agregar</button></td>
-            </tr>
-            <tr>
-              <td>Sprite 600ml</td>
-              <td>Agua con gas sabor limón</td>
-              <td class="precio-col">$18</td>
-              <td><button class="btn-agregar">Agregar</button></td>
-            </tr>
-          </tbody>
+          <tbody id="tbody-refrescos"></tbody>
         </table>
       </div>
 
-      
       <div class="menu-categoria">
         <h2 class="categoria-titulo botanas">🍿 Botanas</h2>
         <table class="menu-tabla">
@@ -95,36 +67,10 @@
               <th>Acción</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Palomitas 150g</td>
-              <td>Palomitas sabor a queso</td>
-              <td class="precio-col">$60</td>
-              <td><button class="btn-agregar">Agregar</button></td>
-            </tr>
-            <tr>
-              <td>Papas Habanero 130g</td>
-              <td>Papas fritas extra picantes</td>
-              <td class="precio-col">$55</td>
-              <td><button class="btn-agregar">Agregar</button></td>
-            </tr>
-            <tr>
-              <td>Cheetos 120g</td>
-              <td>Botana de maíz picante</td>
-              <td class="precio-col">$70</td>
-              <td><button class="btn-agregar">Agregar</button></td>
-            </tr>
-            <tr>
-              <td>Papas Natural 140g</td>
-              <td>Papas fritas sabor clásico</td>
-              <td class="precio-col">$75</td>
-              <td><button class="btn-agregar">Agregar</button></td>
-            </tr>
-          </tbody>
+          <tbody id="tbody-botanas"></tbody>
         </table>
       </div>
 
-      
       <div class="menu-categoria">
         <h2 class="categoria-titulo lacteos">🥛 Lácteos</h2>
         <table class="menu-tabla">
@@ -136,32 +82,7 @@
               <th>Acción</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Leche Entera 1L</td>
-              <td>Leche fresca entera pasteurizada</td>
-              <td class="precio-col">$38</td>
-              <td><button class="btn-agregar">Agregar</button></td>
-            </tr>
-            <tr>
-              <td>Crema Lala</td>
-              <td>Crema espesa natural</td>
-              <td class="precio-col">$40</td>
-              <td><button class="btn-agregar">Agregar</button></td>
-            </tr>
-            <tr>
-              <td>Queso Fresco 400g</td>
-              <td>Ideal para antojitos mexicanos</td>
-              <td class="precio-col">$45</td>
-              <td><button class="btn-agregar">Agregar</button></td>
-            </tr>
-            <tr>
-              <td>Yogurt 500ml</td>
-              <td>Yogurt natural cremoso y delicioso</td>
-              <td class="precio-col">$60</td>
-              <td><button class="btn-agregar">Agregar</button></td>
-            </tr>
-          </tbody>
+          <tbody id="tbody-lacteos"></tbody>
         </table>
       </div>
 
@@ -176,5 +97,5 @@
 </footer>
 
 <script src="js/carrito.js"></script>
+<script src="js/supabase.js"></script>
 </body>
-</html>
