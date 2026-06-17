@@ -1,4 +1,3 @@
-
 function obtenerCarrito() {
   return JSON.parse(localStorage.getItem('carrito')) || [];
 }
@@ -37,18 +36,40 @@ function actualizarContador() {
   contador.style.display = total > 0 ? 'inline' : 'none';
 }
 
+function leerDatosProducto(btn) {
+  // Caso 1: tarjeta de producto (index.html)
+  const tarjeta = btn.closest('.producto');
+  if (tarjeta) {
+    const nombre = tarjeta.querySelector('h3').textContent.trim();
+    const precioTexto = tarjeta.querySelector('.precio').textContent.trim();
+    const precio = parseFloat(precioTexto.replace('$', '').replace(',', ''));
+    const img = tarjeta.querySelector('img').getAttribute('src');
+    return { nombre, precio, img };
+  }
+
+  // Caso 2: fila de tabla (menu.html)
+  const fila = btn.closest('tr');
+  if (fila) {
+    const celdas = fila.querySelectorAll('td');
+    const nombre = celdas[0].textContent.trim();
+    const precioTexto = celdas[2].textContent.trim();
+    const precio = parseFloat(precioTexto.replace('$', '').replace(',', ''));
+    const img = ''; // el menú no tiene imagen, se deja vacío
+    return { nombre, precio, img };
+  }
+
+  return null;
+}
+
 function inicializarBotonesAgregar() {
   const botones = document.querySelectorAll('.btn-agregar');
 
   botones.forEach(btn => {
     btn.addEventListener('click', () => {
-      const tarjeta = btn.closest('.producto');
+      const datos = leerDatosProducto(btn);
+      if (!datos) return;
 
-      // Leer datos del producto desde la tarjeta
-      const nombre = tarjeta.querySelector('h3').textContent.trim();
-      const precioTexto = tarjeta.querySelector('.precio').textContent.trim();
-      const precio = parseFloat(precioTexto.replace('$', '').replace(',', ''));
-      const img = tarjeta.querySelector('img').getAttribute('src');
+      const { nombre, precio, img } = datos;
 
       const carrito = obtenerCarrito();
       const existente = carrito.find(p => p.nombre === nombre);
@@ -126,7 +147,7 @@ function renderizarCarrito() {
   // Tabla de productos
   let filas = carrito.map((item, i) => `
     <tr>
-      <td><img src="${item.img}" alt="${item.nombre}"></td>
+      <td>${item.img ? `<img src="${item.img}" alt="${item.nombre}">` : ''}</td>
       <td>${item.nombre}</td>
       <td class="precio-col">$${item.precio.toFixed(2)}</td>
       <td>
